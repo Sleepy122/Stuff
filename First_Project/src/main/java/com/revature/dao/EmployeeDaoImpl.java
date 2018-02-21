@@ -12,6 +12,7 @@ import com.revature.util.ConnectionUtil;
 public class EmployeeDaoImpl {
 	private String filename = "Connection.properties";
 	public static int Employee_ID;
+	public static String Email;
 	private String First_Name;
 
 	public int getEmployee_ID() {
@@ -26,6 +27,7 @@ public class EmployeeDaoImpl {
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
 				this.Employee_ID = rs.getInt(1);
+				this.Email = rs.getString(5);
 				stored_username = rs.getString(6);
 				stored_password = rs.getString(7);
 

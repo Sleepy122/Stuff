@@ -55,11 +55,14 @@ public class RequestDaoImpl {
 
 	public String getPendingEmployeeReinbursments(int Employee_id) {
 		String jsonRequests = "";
+		//System.out.println("got here");
 		try(Connection con = ConnectionUtil.getConnectionFromFile(filename)){
 			PreparedStatement statement = con.prepareStatement("select * from pending_request where employee_id = ?");
 			statement.setInt(1, Employee_id);
+			//System.out.println("got here");
 			ResultSet rs = statement.executeQuery();
 			while(rs.next()) {
+				System.out.println("got here");
 			this.request_Id = rs.getInt(1);
 			jsonRequests += "{\"Request_Id\":"+rs.getInt(1)+",";
 			jsonRequests += "\"Employee_Id\":"+rs.getInt(2)+",";
@@ -109,6 +112,35 @@ public class RequestDaoImpl {
 		String jsonRequests = "{\"things\":[";
 		try(Connection con = ConnectionUtil.getConnectionFromFile(filename)){
 			PreparedStatement statement = con.prepareStatement("select * from pending_request");
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()) {
+			System.out.println(rs.getInt(1));
+			jsonRequests += "{\"Request_Id\":"+rs.getInt(1)+",";
+			jsonRequests += "\"Employee_Id\":"+rs.getInt(2)+",";
+			jsonRequests += "\"Description\":\""+rs.getString(3)+"\",";
+			jsonRequests += "\"Request_Amount\":"+rs.getDouble(4)+",";
+			jsonRequests += "\"Status\":"+rs.getInt(5)+",";
+			jsonRequests += "\"Date_Submitted\":\""+rs.getString(6)+"\"},";
+
+			}
+			
+				jsonRequests = jsonRequests.substring(0, jsonRequests.length()-1);
+				jsonRequests+= "]}";
+				System.out.println(jsonRequests);;
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonRequests;
+	}
+	public String getAllResolvedEmployeeReinbursments() {
+		String jsonRequests = "{\"things\":[";
+		try(Connection con = ConnectionUtil.getConnectionFromFile(filename)){
+			PreparedStatement statement = con.prepareStatement("select * from completed_request");
 			ResultSet rs = statement.executeQuery();
 			while(rs.next()) {
 			System.out.println(rs.getInt(1));

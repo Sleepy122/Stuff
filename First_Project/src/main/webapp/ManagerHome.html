@@ -1,38 +1,65 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
+
 <meta charset="utf-8">
+
 <title>Transparent Login Form</title>
+
 <!--link rel="stylesheet" href="Styles/Employee_Home.css"-->
+
 </head>
+
 <body>
 	<div class="wrapper">
-		<!-- nav>
-			<div class="logo">Logo</div>
-			<ul>
-				<li><a href="#">Update Profile</a></li>
-				<li><a href="#">Submit Reinbursment Request</a></li>
-				<li><a href="#">View Pending Requests</a></li>
-				<li><a class="active" href="#">Log Out</a></li>
-			</ul>
-		</nav-->
+
+		<button type="button" onclick="getAllResolvedRequests()">Get
+			Completed Requests</button>
+		<section class="content">
+			<table id="All_Resolved" style="width: 50%"></table>
+		</section>
 
 
-		<button type="button" onclick="getAllPending()">Get Pending Requests</button>
+		<button type="button" onclick="getAllPendingRequests()">Get
+			Pending Requests</button>
 		<section class="content">
 			<table id="All_Pending" style="width: 50%"></table>
 		</section>
 
-		<button type="button" onclick="getAllEmployees()">Get All Employees</button>
+
+		<button type="button" onclick="getAllEmployees()">Get All
+			Employees</button>
+
 		<section class="content">
+
 			<table id="All_Employees" style="width: 50%"></table>
+
 		</section>
-		
+
+		<button type="button" id ="SearchById">Get Requests by Id</button>
+		<input type="hidden" id ="SearchByIdForm" name ="SearchById"/>
+		<button type ="button id ="SubmitSearchbyID">Search</button>
+		<section class="content">
+
+			<table id="All_ById" style="width: 50%"></table>
+
+		</section>
+
+
 		<form action="logout" method="get">
+
 			Logout: <input type="submit" />
+
 		</form>
+
 	</div>
+
 </body>
-<script src="Scripts/GetAllPending.js"></script>
+<script src="Scripts/GetAllResolvedRequests.js"></script>
+<script src="Scripts/GetAllPendingRequests.js"></script>
+
 <script src="Scripts/AllEmployees.js"></script>
+
 </html>

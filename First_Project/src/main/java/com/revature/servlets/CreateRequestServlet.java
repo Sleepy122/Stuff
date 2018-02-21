@@ -23,9 +23,9 @@ public class CreateRequestServlet extends HttpServlet {
 		RequestDaoImpl req = new RequestDaoImpl();
 		float amount = Float.parseFloat(request.getParameter("requestAmount").toString());
 		String description = request.getParameter("description").toString();
-		req.createRequest(description, amount);
 		
-		doGet(request, response);
+		req.createRequest(description, amount);
+		response.sendRedirect("EmployeeHome.html");
 	}
 
 }

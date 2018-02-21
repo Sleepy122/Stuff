@@ -2,19 +2,20 @@
 
 var xhr = new XMLHttpRequest() || new ActieXObject("Microsoft.HttpRequest");
 
-function getAllEmployees() {
-	xhr.open("Get", "/First_Project/AllEmployeeInfo");
+function getAllPendingRequests() {
+	xhr.open("Get", "/First_Project/AllPendingRequestServlet");
 	xhr.send();
-	xhr.onreadystatechange = stuffEmployee;
+	xhr.onreadystatechange = PendingRequests;
 }
 ;
 
-function stuffEmployee() {
+function PendingRequests() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
+		if(JSON.parse(xhr.responseText)){
 		obj = JSON.parse(xhr.responseText);
 		
 		
-		//console.log(obj);
+		console.log(obj);
 		//console.log(obj.things.length);
 		//console.log(obj.Request_Id);
 		//console.log(Object.keys(obj).length + " this is the size");
@@ -40,7 +41,7 @@ function stuffEmployee() {
 			
 			
 			
-			var table = document.getElementById("All_Employees");
+			var table = document.getElementById("All_Pending");
 			if (x<= 0) {
 				//console.log("got here");
 				var headRow = table.insertRow(-1);
@@ -61,5 +62,7 @@ function stuffEmployee() {
 			
 		}
 	 }
+	}else{document.getElementById("All_Resolved").innerHTML = "No Completed Requests"
+	}
 
 };

@@ -27,7 +27,8 @@ public class Driver {
 			e.printStackTrace();
 		}
 		
-		
+		RequestDaoImpl rq = new RequestDaoImpl();
+		System.out.println(rq.getPendingEmployeeReinbursments(9));
 		/*
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-DD");
 		LocalDate date_now = LocalDate.now();

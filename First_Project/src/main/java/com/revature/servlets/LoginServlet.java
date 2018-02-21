@@ -45,6 +45,8 @@ public class LoginServlet extends HttpServlet {
 			if(emp.is_Manager(username, password)) {
 				session.setAttribute("username", username);
 				session.setAttribute("Employee_Id",emp.getEmployee_ID());
+				session.setAttribute("Passwo",password);
+				session.setAttribute("Email",emp.getEmployee_ID());
 				session.setAttribute("problem", null);
 				resp.sendRedirect("ManagerHome.html");
 				

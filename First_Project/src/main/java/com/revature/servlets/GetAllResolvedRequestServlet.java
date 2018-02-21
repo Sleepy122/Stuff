@@ -1,38 +1,34 @@
 package com.revature.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.revature.dao.EmployeeDaoImpl;
+import com.revature.dao.RequestDaoImpl;
 
-
-public class UpdateProfileTransferServlet extends HttpServlet {
+public class GetAllResolvedRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public UpdateProfileTransferServlet() {
+    public GetAllResolvedRequestServlet() {
         super();
- 
+        // TODO Auto-generated constructor stub
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.sendRedirect("UpdateProfile.html");
+		RequestDaoImpl req = new RequestDaoImpl();
+		//System.out.println(request.getSession().getAttribute("Employee_Id").toString());
+		String Req_Object = req.getAllResolvedEmployeeReinbursments();
+		response.setContentType("text/html");
+		System.out.println(Req_Object);
+		response.getWriter().write(Req_Object);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession sess = request.getSession(false);
-		EmployeeDaoImpl emp = new EmployeeDaoImpl();
-		response.getWriter().write("{things:[{\"Password\":\""+sess.getAttribute("Passwo")+"\"},username:\""+sess.getAttribute("Username")+"\"},{\"Email\":\""+sess.getAttribute("Email")+"\"}");
-	
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

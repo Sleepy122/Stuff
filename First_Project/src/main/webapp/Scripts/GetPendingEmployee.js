@@ -1,15 +1,17 @@
 
 
-var xhr = new XMLHttpRequest() || new ActieXObject("Microsoft.HttpRequest");
+v
 
 function findJSONEmployee() {
+	var xhr = new XMLHttpRequest() || new ActieXObject("Microsoft.HttpRequest");
 	xhr.open("Get", "/First_Project/requestTableAddition");
 	xhr.send();
-	xhr.onreadystatechange = stuffEmployee;
+	xhr.onreadystatechange = stuffEmployee2;
 };
 
-function stuffEmployee() {
+function stuffEmployee2() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
+		if(xhr.responseText){
 		obj = JSON.parse(xhr.responseText);
 		//console.log(obj.Request_Id);
 		console.log(Object.keys(obj).length + " this is the size");
@@ -45,7 +47,10 @@ function stuffEmployee() {
 			}
 			count+=1;
 		}
+	}else{
+		document.getElementById("Table_body").innerHTML = "You have no Pending Requests";
 
+	}
 	}
 
 };
