@@ -20,12 +20,14 @@ public class EmployeeDaoImpl {
 	}
 	
 	public boolean getAuthorization(String username, String password) {
+		System.out.println("got here");
 		String stored_username = null, stored_password = null;
 		try (Connection con = ConnectionUtil.getConnectionFromFile(filename)) {
 			PreparedStatement statement = con.prepareStatement("select * from employee where username = ?");
 			statement.setString(1, username);
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
+				System.out.println("got here into try");
 				this.Employee_ID = rs.getInt(1);
 				this.Email = rs.getString(5);
 				stored_username = rs.getString(6);

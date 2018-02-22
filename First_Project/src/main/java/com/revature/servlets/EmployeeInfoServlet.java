@@ -21,8 +21,10 @@ public class EmployeeInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 			RequestDaoImpl info = new RequestDaoImpl();
 			//System.out.println(request.getSession().getAttribute("Employee_Id").toString());
+			
 			//String Reinbursment_Object = info.getPendingEmployeeReinbursments(Integer.parseInt(request.getSession().getAttribute("Employee_Id").toString()));
-			String Reinbursment_Object = info.getPendingEmployeeReinbursments(21);
+			System.out.println("got here into tryfasdfas");
+			String Reinbursment_Object = info.getPendingEmployeeReinbursments(0);
 			response.setContentType("text/html");
 			response.getWriter().write(Reinbursment_Object);
 		

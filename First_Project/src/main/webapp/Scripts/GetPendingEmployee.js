@@ -1,15 +1,13 @@
 
-
-v
-
-function findJSONEmployee() {
 	var xhr = new XMLHttpRequest() || new ActieXObject("Microsoft.HttpRequest");
+function findJSONEmployee() {
 	xhr.open("Get", "/First_Project/requestTableAddition");
 	xhr.send();
 	xhr.onreadystatechange = stuffEmployee2;
 };
 
 function stuffEmployee2() {
+	console.log(xhr.status);
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		if(xhr.responseText){
 		obj = JSON.parse(xhr.responseText);
